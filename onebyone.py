@@ -1,59 +1,49 @@
-from turtle import width
-import numpy as np 
 import cv2
-import os
-import time
-import threading
+
+def org():
+    cap2 = cv2.VideoCapture(0)
+    while(1):
+        
+        ret, frame1 = cap2.read()    
+        cv2.imshow('orginal',frame1)
+        k = cv2.waitKey(30) & 0xff
+        if k == 27:
+            break
+    cap2.release()
+    cv2.destroyAllWindows()
 
 
-def przetwarzanie_kamery():
-
-
-    cap = cv2.VideoCapture(0)    
-  
-    
-    
-    
-    
+def obraz():
+    cap = cv2.VideoCapture(0)
     ret, frame1 = cap.read()    
     
-    def convert_to_gray(frame):
-        gray = frame[:, :, 0] * 0.114 + frame[:, :, 1] * 0.587 + frame[:, :, 2] * 0.299
-        return gray.astype('uint8')
+    
    
-    frame1=convert_to_gray(frame1)
-    obraz3=0
-    t=True
+    frame1=cv2.cvtColor(frame1, cv2.COLOR_BGR2GRAY)
+    
+   
     while(1):
-        t=not(t)
-        #cv2.waitKey(100)
+       
+      
         
         ret, frame2 = cap.read()
         
-        cv2.imshow('orginal',frame2)
+        
         
 
         frame2= cv2.cvtColor(frame2, cv2.COLOR_BGR2GRAY)
         
-        #fr=frame2-frame1
+        
         
         fr=cv2.absdiff(frame2, frame1)
 
           
-        _, fr = cv2.threshold(fr, 30, 255, cv2.THRESH_BINARY)
-        #fr = cv2.medianBlur(fr, 3)
+        _, fr = cv2.threshold(fr, 20, 255, cv2.THRESH_BINARY)
         
-        obraz3=fr
-
-
+ 
         
+        cv2.imshow('roznica zdjec 1',fr)
 
-                
-
-        
-        cv2.imshow('roznica',fr)
-
-        
         frame1=frame2
 
 
@@ -65,8 +55,3 @@ def przetwarzanie_kamery():
 
 
 
-
-
-    
-
-przetwarzanie_kamery()
