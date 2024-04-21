@@ -45,13 +45,16 @@ if __name__ == '__main__':
     
     
 
-    #orginalne.start()
+    orginalne.start()
     #one.start()
-    #one2.start()
+    one2.start()
     #back.start()
     #vibe.start()
     #vibemale.start()
     #vibemini.start()
     # wait for the process to finish
+    
+    input("zakoncz: ")
+      
     print('Waiting for the process...')
     
