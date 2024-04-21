@@ -9,19 +9,7 @@ def obraz():
     ilerazy = 2
     radius=3
     
-    def dopelnienie():
-            for i in range(h):
-                a=np.where(fr1[i] == 255)[0] #x where white
-                if a.any()!=NULL:
-                    start=a[0]
-                    stop=0
-                    #fr1[i,start:stop]=255
-                    for k in a[1:]:
-                        d = k-start
-                        if d>1 and d<ile:
-                            fr1[i,start:k]=255
-                        else:
-                            start=k
+   
         
     def dopasowaniepelne(fr1):
 
